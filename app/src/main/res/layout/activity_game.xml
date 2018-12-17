@@ -8,4 +8,157 @@
         android:layout_height="match_parent"
         tools:context=".Activity.GameActivity">
 
+    <!-- DEALER -->
+
+    <TextView
+            android:id="@+id/dealer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:textColor="#E0E0E0"
+            android:text="Dealer"/>
+
+    <ImageView
+            android:id="@+id/dealerCard1"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            app:layout_constraintTop_toBottomOf="@id/dealer"
+            app:layout_constraintRight_toLeftOf="@id/dealerCard2"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            android:src="@drawable/cardbackred"/>
+
+    <ImageView
+            android:id="@+id/dealerCard2"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            app:layout_constraintTop_toBottomOf="@id/dealer"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="60dp"
+            android:src="@drawable/cardbackred"/>
+
+    <ImageView
+            android:id="@+id/dealerCard3"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            app:layout_constraintTop_toBottomOf="@id/dealer"
+            app:layout_constraintLeft_toRightOf="@id/dealerCard2"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/cardbackred"/>
+
+    <ImageView
+            android:id="@+id/dealerCard4"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            app:layout_constraintTop_toBottomOf="@id/dealer"
+            app:layout_constraintLeft_toRightOf="@id/dealerCard3"
+            android:layout_marginTop="20dp"
+            android:visibility="gone"
+            android:src="@drawable/cardbackred"/>
+
+    <TextView
+            android:id="@+id/dealerValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/dealerCard2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            android:text="Value : XX"
+            android:textColor="#E0E0E0"/>
+
+    <!-- Action -->
+
+
+    <ImageView
+            android:id="@+id/token"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/chipblack"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"/>
+
+    <TextView
+            android:id="@+id/tokenCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/token"
+            app:layout_constraintLeft_toLeftOf="@id/token"
+            app:layout_constraintRight_toRightOf="@id/token"
+            android:layout_marginTop="10dp"
+            android:text="chips :"
+            android:textColor="#E0E0E0"/>
+
+
+    <!-- Player -->
+
+    <TextView
+            android:id="@+id/playerValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@id/playerCard2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginBottom="20dp"
+            android:text="Value : XX"
+            android:textColor="#E0E0E0"/>
+
+    <ImageView
+            android:id="@+id/playerCard1"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            app:layout_constraintBottom_toTopOf="@id/player"
+            app:layout_constraintRight_toLeftOf="@id/playerCard2"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"
+            android:src="@drawable/cardbackred"/>
+
+    <ImageView
+            android:id="@+id/playerCard2"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            app:layout_constraintBottom_toTopOf="@id/player"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="60dp"
+            android:src="@drawable/cardbackred"/>
+
+    <ImageView
+            android:id="@+id/playerCard3"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            app:layout_constraintBottom_toTopOf="@id/player"
+            app:layout_constraintLeft_toRightOf="@id/playerCard2"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/cardbackred"/>
+
+    <ImageView
+            android:id="@+id/playerCard4"
+            android:layout_width="60dp"
+            android:layout_height="70dp"
+            app:layout_constraintBottom_toTopOf="@id/player"
+            app:layout_constraintLeft_toRightOf="@id/playerCard3"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"
+            android:src="@drawable/cardbackred"/>
+
+    <TextView
+            android:id="@+id/player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Player"
+            android:textColor="#E0E0E0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+    />
+
 </android.support.constraint.ConstraintLayout>
