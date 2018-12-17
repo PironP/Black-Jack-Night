@@ -1,4 +1,3 @@
 package com.pierrepiron.blackjacknight.Model
 
-class Player {
-}
+data class Player(val name: String, val cards: Card, val tokens: Int) {}

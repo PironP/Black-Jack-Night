@@ -1,4 +1,5 @@
 package com.pierrepiron.blackjacknight.Model
 
-class Dealer {
+class Dealer(deck: Card) {
+
 }
