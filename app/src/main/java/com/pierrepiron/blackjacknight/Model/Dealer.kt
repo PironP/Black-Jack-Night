@@ -7,6 +7,7 @@ class Dealer(var deck: MutableList<Card>) {
         var tabCar = mutableListOf<Card>()
         for(i in 1..nbCard) {
             tabCar.addAll(listOf(deck.get(i)))
+            deck.removeAt(i)
         }
         return tabCar
     }

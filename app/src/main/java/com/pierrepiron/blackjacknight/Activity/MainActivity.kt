@@ -17,8 +17,7 @@ class MainActivity : AppCompatActivity() {
         val deck = Deck().createPack()
         val dealer = Dealer(deck)
         val distrib = dealer.distribCard(2)
-        Log.e("Debug1", "Card1 : " + distrib)
         val valueHand = Hand(distrib).isBust()
-        Log.e("Debug2", "Card2 : " + valueHand)
+        Log.e("Debug2", "Card2 : " + deck.size)
     }
 }
