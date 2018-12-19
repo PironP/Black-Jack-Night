@@ -13,6 +13,7 @@ class Deck {
                 arrayCard.addAll(listOf(Card(i.toString(), suit, this.valueOfCard(i))))
             }
         }
+        arrayCard.shuffle()
         return arrayCard
     }
 

@@ -13,8 +13,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val deck = Deck()
+        val deck = Deck().createPack()
         val dealer = Dealer(deck)
-        Log.e("Debug", "Card : " + dealer.distribCard(2))
+        val distrib = dealer.distribCard(2)
+        Log.e("Debug", "Card : " + distrib)
     }
 }
