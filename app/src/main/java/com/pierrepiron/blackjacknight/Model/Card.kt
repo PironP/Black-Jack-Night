@@ -1,4 +1,3 @@
 package com.pierrepiron.blackjacknight.Model
 
-class Card {
-}
+data class Card(val name: String, val symbol: String, val value: Int) {}

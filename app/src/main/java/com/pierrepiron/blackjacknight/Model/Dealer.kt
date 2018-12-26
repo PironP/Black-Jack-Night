@@ -1,4 +1,15 @@
 package com.pierrepiron.blackjacknight.Model
 
-class Dealer {
+import android.util.Log
+
+class Dealer(var deck: MutableList<Card>) {
+    fun distribCard(nbCard: Int): MutableList<Card> {
+        var tabCar = mutableListOf<Card>()
+        for(i in 1..nbCard) {
+            tabCar.addAll(listOf(deck.get(i)))
+            deck.removeAt(i)
+        }
+        return tabCar
+    }
+
 }
