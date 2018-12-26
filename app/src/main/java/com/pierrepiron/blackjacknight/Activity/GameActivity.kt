@@ -2,6 +2,7 @@ package com.pierrepiron.blackjacknight.Activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import com.pierrepiron.blackjacknight.Model.*
 import com.pierrepiron.blackjacknight.R
@@ -15,12 +16,14 @@ class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game)
-
         setupNewGame()
     }
 
     fun setupNewGame() {
         dealer.deck = Deck().createPack()
+
+        drawButton.setOnClickListener { drawButtonPressed() }
+
         startRound()
     }
 
@@ -34,16 +37,62 @@ class GameActivity : AppCompatActivity() {
         player.hand.cards = dealer.distribCards(2)
         dealer.hand.cards = dealer.distribCards(2)
 
-        showValue("player")
+        showPlayerScore()
         showPlayerCard()
+        playersTurn()
     }
 
-    fun showValue(character: String) {
-        if (character === "player") {
-            playerValue.text = "Value: " + player.hand.getTotalCardHand().toString()
+    fun playersTurn() {
+        if (player.hand.cards.count() == 4 || player.hand.getTotalCardHand() >= 21) {
+            // dealer's turn
+            drawButton.visibility = Button.GONE
+            stopButton.visibility = Button.GONE
+            dealerCard2.setImageResource(getCardDrawable(dealer.hand.cards[1]))
+            dealersTurn()
         } else {
-            dealerValue.text = "Value: " + dealer.hand.getTotalCardHand().toString()
+            drawButton.visibility = Button.VISIBLE
+            stopButton.visibility = Button.VISIBLE
         }
+    }
+
+    fun dealersTurn() {
+        if (
+            dealer.hand.getTotalCardHand() >= player.hand.getTotalCardHand()
+            || dealer.hand.cards.count() == 4
+            || player.hand.isBust()
+            || dealer.hand.isBust()
+        ) {
+            // End Round
+        } else if (dealer.hand.cards.count() == 2) {
+            dealer.hand.cards.add(dealer.distribCard())
+            showDealerValue()
+            dealerCard3.setImageResource(getCardDrawable(dealer.hand.cards[2]))
+            dealerCard3.visibility = ImageView.VISIBLE
+            dealersTurn()
+        } else {
+            dealer.hand.cards.add(dealer.distribCard())
+            showDealerValue()
+            dealerCard4.setImageResource(getCardDrawable(dealer.hand.cards[3]))
+            dealerCard4.visibility = ImageView.VISIBLE
+            dealersTurn()
+        }
+    }
+
+    fun drawButtonPressed() {
+        player.hand.cards.add(dealer.distribCard())
+        showPlayerScore()
+        if (player.hand.cards.count() == 3) {
+            playerCard3.setImageResource(getCardDrawable(player.hand.cards[2]))
+            playerCard3.visibility = ImageView.VISIBLE
+        } else {
+            playerCard4.setImageResource(getCardDrawable(player.hand.cards[3]))
+            playerCard4.visibility = ImageView.VISIBLE
+        }
+        playersTurn()
+    }
+
+    fun showPlayerScore() {
+        playerValue.text = "Value: " + player.hand.getTotalCardHand().toString()
     }
 
     fun showPlayerCard() {
@@ -52,10 +101,14 @@ class GameActivity : AppCompatActivity() {
         dealerCard1.setImageResource(getCardDrawable(dealer.hand.cards[0]))
     }
 
+    fun showDealerValue() {
+        dealerValue.text = "Value: " + dealer.hand.getTotalCardHand().toString()
+    }
+
     fun getCardDrawable(card: Card): Int {
         var cardValue: String
         when (card.name) {
-            "14" -> cardValue = "a"
+            "1" -> cardValue = "a"
             "11" -> cardValue = "j"
             "12" -> cardValue = "q"
             "13" -> cardValue = "k"
@@ -85,5 +138,11 @@ class GameActivity : AppCompatActivity() {
         playerCard4.visibility = ImageView.GONE
         dealerCard3.visibility = ImageView.GONE
         dealerCard4.visibility = ImageView.GONE
+
+        drawButton.visibility = Button.GONE
+        stopButton.visibility = Button.GONE
+
+        player.hand.cards.clear()
+        dealer.hand.cards.clear()
     }
 }

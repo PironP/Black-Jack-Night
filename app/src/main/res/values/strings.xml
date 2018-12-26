@@ -4,4 +4,6 @@
     <string name="stop">STOP</string>
     <string name="player">Player</string>
     <string name="dealer">Dealer</string>
+    <string name="chips">chips :</string>
+    <string name="wins">wins</string>
 </resources>
