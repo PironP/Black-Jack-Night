@@ -21,9 +21,8 @@ class GameActivity : AppCompatActivity() {
 
     fun setupNewGame() {
         dealer.deck = Deck().createPack()
-
         drawButton.setOnClickListener { drawButtonPressed() }
-
+        stopButton.setOnClickListener { playersTurnEnd() }
         startRound()
     }
 
@@ -45,14 +44,18 @@ class GameActivity : AppCompatActivity() {
     fun playersTurn() {
         if (player.hand.cards.count() == 4 || player.hand.getTotalCardHand() >= 21) {
             // dealer's turn
-            drawButton.visibility = Button.GONE
-            stopButton.visibility = Button.GONE
-            dealerCard2.setImageResource(getCardDrawable(dealer.hand.cards[1]))
-            dealersTurn()
+            playersTurnEnd()
         } else {
             drawButton.visibility = Button.VISIBLE
             stopButton.visibility = Button.VISIBLE
         }
+    }
+
+    fun playersTurnEnd() {
+        drawButton.visibility = Button.GONE
+        stopButton.visibility = Button.GONE
+        dealerCard2.setImageResource(getCardDrawable(dealer.hand.cards[1]))
+        dealersTurn()
     }
 
     fun dealersTurn() {
@@ -106,7 +109,7 @@ class GameActivity : AppCompatActivity() {
     }
 
     fun getCardDrawable(card: Card): Int {
-        var cardValue: String
+        val cardValue: String
         when (card.name) {
             "1" -> cardValue = "a"
             "11" -> cardValue = "j"
