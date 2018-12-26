@@ -1,11 +1,11 @@
 package com.pierrepiron.blackjacknight.Model
 
-class Hand(var card: MutableList<Card>) {
+class Hand(var cards: MutableList<Card>) {
     fun getTotalCardHand(): Int {
         var total: Int = 0
-        var nbCard = if(card.size > 2) card.size else 1
+        var nbCard = if(cards.size > 2) cards.size else 1
         for (i in 0..nbCard) {
-            total += card.get(i).value
+            total += cards.get(i).value
         }
         return total
     }

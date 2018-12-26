@@ -9,7 +9,7 @@ class Deck {
         var arrayCard = mutableListOf<Card>()
 
         for (suit: String in suits) {
-            for(i in 1..14) {
+            for(i in 2..14) {
                 arrayCard.addAll(listOf(Card(i.toString(), suit, this.valueOfCard(i))))
             }
         }
