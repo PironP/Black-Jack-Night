@@ -149,6 +149,31 @@
             android:text="0"
             android:textColor="#E0E0E0"/>
 
+    <TextView
+            android:id="@+id/turnEndText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/player_win"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:visibility="gone"
+            android:textColor="#E0E0E0"
+            android:layout_marginBottom="70dp"/>
+
+    <Button
+            android:id="@+id/newTurnButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_turn"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="70dp"/>
+
     <!-- Player -->
 
     <TextView

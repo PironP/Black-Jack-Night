@@ -6,4 +6,6 @@
     <string name="dealer">Dealer</string>
     <string name="chips">chips :</string>
     <string name="wins">wins</string>
+    <string name="player_win">player win</string>
+    <string name="new_turn">New Turn</string>
 </resources>
