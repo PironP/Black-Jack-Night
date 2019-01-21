@@ -59,6 +59,19 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
+    fun drawButtonPressed() {
+        player.hand.cards.add(dealer.distribCard())
+        showPlayerValue()
+        if (player.hand.cards.count() == 3) {
+            playerCard3.setImageResource(getCardDrawable(player.hand.cards[2]))
+            playerCard3.visibility = ImageView.VISIBLE
+        } else {
+            playerCard4.setImageResource(getCardDrawable(player.hand.cards[3]))
+            playerCard4.visibility = ImageView.VISIBLE
+        }
+        playersTurn()
+    }
+
     fun playersTurnEnd() {
         drawButton.visibility = Button.GONE
         stopButton.visibility = Button.GONE
@@ -108,17 +121,19 @@ class GameActivity : AppCompatActivity() {
         showWinsCount()
     }
 
-    fun drawButtonPressed() {
-        player.hand.cards.add(dealer.distribCard())
-        showPlayerValue()
-        if (player.hand.cards.count() == 3) {
-            playerCard3.setImageResource(getCardDrawable(player.hand.cards[2]))
-            playerCard3.visibility = ImageView.VISIBLE
-        } else {
-            playerCard4.setImageResource(getCardDrawable(player.hand.cards[3]))
-            playerCard4.visibility = ImageView.VISIBLE
+    fun getCardDrawable(card: Card): Int {
+        val cardValue: String
+        when (card.name) {
+            "14" -> cardValue = "a"
+            "11" -> cardValue = "j"
+            "12" -> cardValue = "q"
+            "13" -> cardValue = "k"
+            else -> {
+                cardValue = card.name
+            }
         }
-        playersTurn()
+        val cardName = "@drawable/card" + card.symbol.toLowerCase() + "s" + cardValue
+        return this.resources.getIdentifier(cardName, null, this.packageName)
     }
 
     fun showPlayerValue() {
@@ -138,21 +153,6 @@ class GameActivity : AppCompatActivity() {
     fun showWinsCount() {
         playerWinCount.text = playerWins.toString()
         dealerWinCount.text = dealerWins.toString()
-    }
-
-    fun getCardDrawable(card: Card): Int {
-        val cardValue: String
-        when (card.name) {
-            "1" -> cardValue = "a"
-            "11" -> cardValue = "j"
-            "12" -> cardValue = "q"
-            "13" -> cardValue = "k"
-            else -> {
-                cardValue = card.name
-            }
-        }
-        val cardName = "@drawable/card" + card.symbol.toLowerCase() + "s" + cardValue
-        return this.resources.getIdentifier(cardName, null, this.packageName)
     }
 
     fun refreshForNewRound() {

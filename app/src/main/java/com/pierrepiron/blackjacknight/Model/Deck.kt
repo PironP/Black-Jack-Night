@@ -9,7 +9,7 @@ class Deck {
         var arrayCard = mutableListOf<Card>()
 
         for (suit: String in suits) {
-            for(i in 1..13) {
+            for(i in 2..14) {
                 arrayCard.addAll(listOf(Card(i.toString(), suit, this.valueOfCard(i))))
             }
         }
@@ -17,5 +17,5 @@ class Deck {
         return arrayCard
     }
 
-    fun valueOfCard(i: Int) = if(i >= 10) 10 else i
+    fun valueOfCard(i: Int) = if(i >= 10) (if (i == 14) 11 else 10 ) else i
 }
