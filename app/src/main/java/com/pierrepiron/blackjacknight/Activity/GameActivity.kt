@@ -27,12 +27,13 @@ class GameActivity : AppCompatActivity() {
         drawButton.setOnClickListener { drawButtonPressed() }
         stopButton.setOnClickListener { playersTurnEnd() }
         newTurnButton.setOnClickListener { startRound() }
+        leaveGame.setOnClickListener { leaveGameButtonPressed() }
         startRound()
     }
 
     fun startRound() {
         if (player.tokens == 0) {
-            // games end
+            gamesEnd()
             return
         }
         if (dealer.deck.count() < 8) {
@@ -181,5 +182,16 @@ class GameActivity : AppCompatActivity() {
 
         player.hand.cards.clear()
         dealer.hand.cards.clear()
+    }
+
+    fun gamesEnd() {
+        turnEndText.visibility = TextView.GONE
+        newTurnButton.visibility = Button.GONE
+        gamesEnd.visibility = TextView.VISIBLE
+        leaveGame.visibility = Button.VISIBLE
+    }
+
+    fun leaveGameButtonPressed() {
+        finish()
     }
 }

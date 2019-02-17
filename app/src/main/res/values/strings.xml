@@ -8,4 +8,6 @@
     <string name="wins">wins</string>
     <string name="player_win">player win</string>
     <string name="new_turn">New Turn</string>
+    <string name="player_loose">You loose. Better luck next time</string>
+    <string name="main_menu_button">Main Menu</string>
 </resources>
