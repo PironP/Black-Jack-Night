@@ -1,15 +1,24 @@
 package com.pierrepiron.blackjacknight.Model
 
-class Hand(var card: MutableList<Card>) {
+class Hand(var cards: MutableList<Card>) {
     fun getTotalCardHand(): Int {
-        var total: Int = 0
-        var nbCard = if(card.size > 2) card.size else 1
-        for (i in 0..nbCard) {
-            total += card.get(i).value
+        var total = 0
+        cards.forEach { total += it.value}
+        if (total > 21 && hasAce()) {
+            total -= 10
         }
-        return total
+         return total
     }
     fun isBust(): Boolean {
-        return if(this.getTotalCardHand() > 21) true else false
+        return this.getTotalCardHand() > 21
+    }
+    fun hasAce(): Boolean {
+        var hasAce = false
+        cards.forEach { card ->
+            if (card.value == 11) {
+                hasAce = true
+            }
+        }
+        return hasAce
     }
 }
